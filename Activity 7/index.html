@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dragon Ball | Character Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        @font-face {
+            font-family: 'Saiyan Sans';
+            src: url('fonts/SaiyanSans.ttf') format('truetype');
+        }
+
+        body {
+            background: linear-gradient(135deg, #1d1400, #ffcc33);
+            font-family: 'Poppins';
+            font-weight: 600;
+            color: #ffffff;
+            transition: background 0.3s ease;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #333, #64490f);
+            color: #ffffff;
+        }
+
+        h1,
+        .navbar-brand,
+        .dragonballname {
+            font-family: 'Saiyan Sans', sans-serif;
+            color: #ffed97;
+            text-shadow: 2px 2px #9b4800;
+            animation: text-flicker 1.5s infinite alternate;
+            font-size: 30px;
+
+        }
+
+        h1 {
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ffed97, 0 0 20px #ff6f00, 0 0 30px #ff6f00;
+            }
+
+            to {
+                text-shadow: 0 0 20px #ffed97, 0 0 30px #ff6f00, 0 0 40px #ff6f00;
+            }
+        }
+
+        .navbar {
+            background-color: #d36607;
+            transition: background 0.3s ease;
+        }
+
+        .navbar.dark-mode-navbar {
+            background-color: #333333;
+        }
+
+        .navbar-brand {
+            margin-left: 10px;
+        }
+
+        .loadingBar {
+            background-color: #ffed97;
+            height: 5px;
+            width: auto;
+            animation: pulse 1.5s infinite alternate;
+            transition: width 0.3s ease;
+        }
+
+        @keyframes pulse {
+            0% {
+                background-color: #ff8839;
+            }
+
+            100% {
+                background-color: #ffd900;
+            }
+        }
+
+        .loadingBarContainer {
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .card {
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.4s, box-shadow 0.4s, background 0.4s;
+            border: none;
+            border-radius: 15px;
+            height: 370px;
+            background: #1b1b1b;
+            color: #ffffff;
+            overflow: hidden;
+            position: relative;
+
+        }
+
+        .card:hover {
+            transform: rotateY(10deg) translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+            background: #ff6f00;
+            border-color: #ffed97;
+
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.1);
+            transform: scale(1);
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+
+        .card:hover::before {
+            transform: scale(1.1);
+        }
+
+        .card.dark-mode-card {
+            background: #444444;
+            color: #ffffff;
+
+        }
+
+        .imgcontainer {
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2b1e0325;
+
+        }
+
+        .imgcontainer img {
+            width: auto;
+            height: 85%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .imgcontainer:hover img {
+            transform: scale(1.1);
+        }
+
+        .dragonballname {
+            font-size: 1.4rem;
+            color: #ffdb27;
+            margin-top: 10px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 2px #000000;
+        }
+
+        .dragonballrace {
+            font-size: 1rem;
+            color: #020202;
+            margin-top: 5px;
+        }
+
+        .btn-outline-secondary {
+            position: relative;
+            overflow: hidden;
+            font-family: 'Saiyan Sans', sans-serif;
+            color: #ffed97;
+            text-shadow: 2px 2px #2e1601;
+            animation: text-flicker 1.5s infinite alternate;
+            font-size: 25px;
+            border: none;
+            margin-right: 10px;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #ff6f0000;
+            color: #fff170;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes text-flicker {
+            0% {
+                opacity: 0.8;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .particle {
+            position: fixed;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #ffd700, #ff8c00);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(-20px);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body id="body">
+
+    <div id="particleContainer"></div>
+
+    <div class="container-fluid loadingBarContainer">
+        <div class="loadingBar" id="loadingBar"></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html">CHAN.</a>
+            <button class="btn btn-outline-secondary" onclick="changeMode()" type="button">Mode</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row mt-5 my-3 animate__animated animate__fadeInUpBig ">
+            <div class="col">
+                <h1 class="display-1 text-center  ">Dragon Ball Character Gallery</h1>
+            </div>
+        </div>
+        <div class="row" id="cardContainer"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+    <script>
+        var colors = {
+            "human": "#e7e5e8",
+            "saiyan": "#fbbc42",
+            "god": "#c192ff",
+            "android": "#ff9898",
+            "namekian": "#a0e08a",
+            "majin": "#ffb3e0",
+            "angel": "#b3e8ff",
+            "jiren race": "#d67780",
+            "nucleico benigno": "#86a3db",
+            "evil": "#8d8d8d",
+            "nucleico": "#ff985e",
+            "frieza race": "#b3b3ff",
+            "unknown": "#feff5d"
+        };
+
+        var cardContainer = document.getElementById("cardContainer");
+        var loadingBar = document.getElementById("loadingBar");
+
+        const getRaceColor = (race) => {
+            return colors[race.toLowerCase()] || colors["unknown"];
+        };
+
+        const loadDragonball = async () => {
+            var characterCount = 100;
+
+            for (var i = 1; i <= characterCount; i++) {
+                const response = await fetch('https://dragonball-api.com/api/characters/' + i);
+                const character = await response.json();
+
+                if (character.name && character.image) {
+                    const raceColor = getRaceColor(character.race || "Unknown");
+                    cardContainer.innerHTML += `
+          <div class="col-6 col-sm-6 col-md-4 col-lg-3 animate__animated animate__zoomIn ">
+    <a href="view.html?characterName=` + character.name + `" style="text-decoration: none; color: inherit;">
+        <div class="card rounded-5 my-3" style="background-color: ` + raceColor + `">
+            <div class ="imgcontainer">
+                <img src="` + character.image + `" alt="` + character.name + `">
+            </div>
+            <div class="dragonballname">` + character.name + `</div>
+            <div class="dragonballrace">Race: ` + (character.race || "Unknown") + `</div>
+        </div>
+    </a>
+</div>
+         `;
+                }
+                loadingBar.style.width = ((i / characterCount) * 100) + '%';
+            }
+        };
+
+        function changeMode() {
+            document.body.classList.toggle("dark-mode");
+            document.querySelector(".navbar").classList.toggle("dark-mode-navbar");
+            document.querySelectorAll(".card").forEach(card => {
+                card.classList.toggle("dark-mode-card");
+            });
+        }
+
+        function ballDragon() {
+            const particleContainer = document.getElementById("particleContainer");
+            for (let i = 0; i < 70; i++) {
+                const particle = document.createElement("div");
+                particle.classList.add("particle");
+                particle.style.top = Math.random() * 100 + "vh";
+                particle.style.left = Math.random() * 100 + "vw";
+                particle.style.width = particle.style.height = `${Math.random() * 25 + 10}px`;
+                particleContainer.appendChild(particle);
+            }
+        }
+
+        ballDragon();
+        loadDragonball();
+    </script>
+</body>
+</html>

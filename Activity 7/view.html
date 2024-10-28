@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Character Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <style>
+
+    @font-face {
+      font-family: 'Saiyan Sans';
+      src: url('fonts/SaiyanSans.ttf') format('truetype');
+    }
+
+    body {
+      background: radial-gradient(circle, #000000, #1d1400);
+      font-family: 'Poppins', sans-serif;
+      color: #ffffff;
+    }
+
+    h1,
+    .navbar-brand,
+    .btn-outline-secondary {
+      font-family: 'Saiyan Sans', sans-serif;
+      color: #ffed97;
+      text-shadow: 2px 2px #9b4800;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+
+    .navbar {
+      background-color: #d36607;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      font-family: 'Saiyan Sans';
+    }
+
+    .navbar-brand {
+            margin-left: 10px;
+            font-size: 30px;
+        }
+
+    .character-card {
+      background-color: #1b1b1b;
+      color: #ffffff;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      transition: transform 0.4s, box-shadow 0.4s;
+      border: 1px solid #ff6f00;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .character-card::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      background: linear-gradient(45deg, #ff6f00, #ffed97, #9b4800, #ffed97);
+      z-index: -1;
+      filter: blur(10px);
+      opacity: 0.6;
+      border-radius: 15px;
+      animation: borderGlow 5s infinite linear;
+    }
+
+    @keyframes borderGlow {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .img-container {
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #444444;
+      border: 3px solid #ffed97;
+      width: auto;
+      height: 500px;
+    }
+
+    .img-container img {
+      width: auto;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .img-container img:hover {
+      transform: scale(1.02);
+    }
+
+    .character-name {
+      font-size: 2.5rem;
+      font-family: 'Saiyan Sans';
+      color: #ffdb27;
+      margin-top: 10px;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 4px #000000;
+      animation: textGlow 2s infinite alternate;
+    }
+
+    .character-species,
+    .character-height,
+    .character-weight {
+      font-size: 1.2rem;
+      color: #e7e5e8;
+      margin-top: 8px;
+    }
+
+    @keyframes textGlow {
+      0% {
+        text-shadow: 0 0 10px #ffdb27, 0 0 20px #ff6f00, 0 0 30px #ff6f00;
+      }
+
+      100% {
+        text-shadow: 0 0 20px #ffdb27, 0 0 30px #ff6f00, 0 0 40px #ff6f00;
+      }
+    }
+
+    .btn-outline-secondary {
+            position: relative;
+            overflow: hidden;
+            font-family: 'Saiyan Sans', sans-serif;
+            color: #ffed97;
+            text-shadow: 2px 2px #2e1601;
+            animation: text-flicker 1.5s infinite alternate;
+            font-size: 25px;
+            border: none;
+            margin-right: 10px;
+
+        }
+
+        .btn-outline-secondary:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #ff6f0000;
+            color: #fff170;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../index.html">CHAN.</a>
+      <button class="btn btn-outline-secondary" onclick="window.history.back()">Back</button>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-12">
+        <div class="character-card mx-auto animate__animated animate__fadeInUp" style="max-width: 500px;">
+          <div class="img-container mb-4">
+            <img id="characterImage" src="" alt="Character Image">
+          </div>
+          <div class="character-name" id="characterName">Name</div>
+          <div class="character-race" id="characterRace">Race: </div>
+          <div class="character-affiliation" id="characterAffiliation">Affiliation: </div>
+          <div class="character-maxki" id="charactermaxKi">maxKi: </div>
+          <div class="character-gender" id="characterGender">Gender </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+  <script>
+    var title = document.getElementById("characterName");
+    var img = document.getElementById("characterImage");
+    var race = document.getElementById("characterRace");
+    var affiliation = document.getElementById("characterAffiliation");
+    var maxKi = document.getElementById("charactermaxKi");
+    var gender = document.getElementById("characterGender");
+
+    const loadCharacterData = async (characterName) => {
+      const response = await fetch("https://dragonball-api.com/api/characters?name=" + characterName);
+      const characterData = await response.json();
+      const character = characterData[0];
+
+      title.innerHTML = character.name; 
+      img.src = character.image;
+      race.innerHTML = "Race: " + (character.race || "Unknown");
+      affiliation.innerHTML = "Affiliation: " + (character.affiliation || "Unknown");
+      maxKi.innerHTML = "MaxKi: " + (character.maxKi || "Unknown");
+      gender.innerHTML = "Gender: " + (character.gender || "Unknown");
+
+    }
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    if (urlParams.has("characterName")) {
+      loadCharacterData(urlParams.get("characterName"));
+    } else {
+      title.innerHTML = "Character not specified.";
+    }
+  </script>
+
+
+</body>
+
+</html>
