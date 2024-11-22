@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Titillium+Web:wght@700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="icon" href="Image/logoChan.png">
+
+  <style>
+    @font-face {
+      font-family: 'Pixel Emulator';
+      src: url('fonts/PixelEmulator-xq08.ttf') format('truetype');
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #f0f0f0;
+      background: #121212;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .container-fluid {
+      position: absolute;
+      text-align: center;
+      padding-bottom: 20vw;
+    }
+
+    h1 {
+      position: relative;
+      font-size: 23vw;
+      color: transparent;
+      font-family: 'Pixel Emulator', sans-serif;
+      -webkit-text-stroke: 2px #0fa05d;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4vw;
+    }
+
+    .left-four {
+      position: relative;
+      margin-right: -1.5vw;
+      font-size: 23vw;
+      line-height: 1;
+      text-align: right;
+    }
+
+    .page-description {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .page-description .col-1,
+    .page-description .col-2 {
+      font-family: 'Pixel Emulator';
+      width: 100%;
+      font-size: clamp(5vw, 6vw, 5vw);
+      font-weight: 600;
+      text-align: center;
+      line-height: 1;
+      margin-bottom: 20px;
+      margin-top: -2.5%;
+    }
+
+
+    .emoji-container {
+      display: inline-block;
+      position: relative;
+      width: 19vw;
+      height: 19vw;
+      align-items: center;
+    }
+
+    svg {
+      display: block;
+      margin: auto;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+
+    a {
+      width: 260px;
+      padding: 10px;
+      font-size: 16px;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      border: 2px solid #0fa05d;
+      background-color: transparent;
+      border-radius: 10px;
+      transition: all 0.4s ease;
+      font-family: 'Pixel Emulator';
+    }
+
+    a:hover {
+      background-color: #0fa05d;
+      color: black;
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0px 4px 15px rgba(15, 160, 93, 0.4);
+    }
+
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    #mouth-straight,
+    #mouth-frown {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .hidden {
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="particles-js"></div>
+  <div class="container-fluid">
+    <h1>
+      <span class="left-four">4</span>
+      <span class="emoji-container">
+        <div id="emoji-face" class="okay-emoji-container">
+          <svg role="img" aria-labelledby="svgTitleID svgDescID" xmlns="http://www.w3.org/2000/svg" width="230"
+            height="230" viewBox="0 0 230 230">
+            <title id="svgTitleID">Pixelated emoji face</title>
+            <g id="Page-1" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+              <g id="okay-emoji" fill="#0fa05d">
+                <g id="face-shape-circle" style="opacity: 1; visibility: inherit;">
+                  <g id="face-shape-circle-group">
+                    <polygon id="face-shape-circle-24" points="220 80 220 150 230 150 230 80"></polygon>
+                    <polygon id="face-shape-circle-23" points="210 160 210 180 220 180 220 150 210 150"></polygon>
+                    <polygon id="face-shape-circle-22" points="210 70 210 80 220 80 220 50 210 50"></polygon>
+                    <polygon id="face-shape-circle-21" points="210 180 200 180 200 190 210 190"></polygon>
+                    <polygon id="face-shape-circle-20" points="210 40 200 40 200 50 210 50"></polygon>
+                    <polygon id="face-shape-circle-19" points="200 190 190 190 190 200 200 200"></polygon>
+                    <polygon id="face-shape-circle-18" points="200 30 190 30 190 40 200 40"></polygon>
+                    <polygon id="face-shape-circle-17" points="190 200 180 200 180 210 190 210"></polygon>
+                    <polygon id="face-shape-circle-16" points="190 20 180 20 180 30 190 30"></polygon>
+                    <polygon id="face-shape-circle-15" points="160 210 150 210 150 220 180 220 180 210"></polygon>
+                    <polygon id="face-shape-circle-14" points="160 20 180 20 180 10 150 10 150 20"></polygon>
+                    <polygon id="face-shape-circle-13" points="130 220 80 220 80 230 150 230 150 220"></polygon>
+                    <polygon id="face-shape-circle-12" points="100 10 150 10 150 0 80 0 80 10"></polygon>
+                    <polygon id="face-shape-circle-11" points="70 210 50 210 50 220 80 220 80 210"></polygon>
+                    <polygon id="face-shape-circle-10" points="70 20 80 20 80 10 50 10 50 20"></polygon>
+                    <polygon id="face-shape-circle-9" points="50 200 40 200 40 210 50 210"></polygon>
+                    <polygon id="face-shape-circle-8" points="50 20 40 20 40 30 50 30"></polygon>
+                    <polygon id="face-shape-circle-7" points="40 190 30 190 30 200 40 200"></polygon>
+                    <polygon id="face-shape-circle-6" points="40 30 30 30 30 40 40 40"></polygon>
+                    <polygon id="face-shape-circle-5" points="30 180 20 180 20 190 30 190"></polygon>
+                    <polygon id="face-shape-circle-4" points="30 40 20 40 20 50 30 50"></polygon>
+                    <polygon id="face-shape-circle-3" points="20 160 20 150 10 150 10 180 20 180"></polygon>
+                    <polygon id="face-shape-circle-2" points="20 70 20 50 10 50 10 80 20 80"></polygon>
+                    <polygon id="face-shape-circle-1" points="10 130 10 80 0 80 0 150 10 150"></polygon>
+                  </g>
+                </g>
+
+                <polygon id="mouth-straight" points="170 140 40 140 40 150 190 150 190 140"
+                  style="opacity: 1; visibility: visible;"></polygon>
+
+                <g id="mouth-frown" transform="matrix(1 0 0 -1 49 192)" style="opacity: 0; visibility: hidden;">
+                  <g id="face-mouth-frown-group">
+                    <polygon id="face-mouth-frown-9"
+                      points="124.235 0 116.471 0 116.471 15.429 132 15.429 132 7.714 124.235 7.714"></polygon>
+                    <polygon id="face-mouth-frown-8"
+                      points="108.706 23.143 108.706 30.857 116.471 30.857 116.471 15.429 108.706 15.429"></polygon>
+                    <polygon id="face-mouth-frown-7"
+                      points="108.706 30.857 100.941 30.857 100.941 38.571 108.706 38.571"></polygon>
+                    <polygon id="face-mouth-frown-6" points="85.412 38.571 85.412 46.286 100.941 46.286 100.941 38.571">
+                    </polygon>
+                    <polygon id="face-mouth-frown-5"
+                      points="69.882 46.286 46.588 46.286 46.588 54 85.412 54 85.412 46.286"></polygon>
+                    <polygon id="face-mouth-frown-4"
+                      points="38.824 38.571 31.059 38.571 31.059 46.286 46.588 46.286 46.588 38.571"></polygon>
+                    <polygon id="face-mouth-frown-3" points="31.059 30.857 23.294 30.857 23.294 38.571 31.059 38.571">
+                    </polygon>
+                    <polygon id="face-mouth-frown-2" points="23.294 15.429 15.529 15.429 15.529 30.857 23.294 30.857">
+                    </polygon>
+                    <polygon id="face-mouth-frown-1"
+                      points="15.529 .771 7.765 .771 7.765 8.486 0 8.486 0 16.2 15.529 16.2"></polygon>
+                  </g>
+                </g>
+
+                <polygon id="eye-right-blink" points="96 84 70 84 70 94 100 94 100 84"
+                  style="opacity: 0; visibility: hidden;"></polygon>
+                <polygon id="eye-left-blink" points="156 84 130 84 130 94 160 94 160 84"
+                  style="opacity: 0; visibility: hidden;"></polygon>
+                <polygon id="eye-right"
+                  points="80 120 90 120 90 110 100 110 100 70 90 70 90 60 80 60 80 70 70 70 70 110 80 110"
+                  style="opacity: 1; visibility: inherit;"></polygon>
+                <polygon id="eye-left"
+                  points="140 120 150 120 150 110 160 110 160 70 150 70 150 60 140 60 140 70 130 70 130 110 140 110"
+                  style="opacity: 1; visibility: inherit;"></polygon>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </span>4
+    </h1>
+    <div class="page-description">
+      <h2>
+        <div class="col-1">
+          The page is 
+        </div>
+        <div class="col-2">
+          missing.
+        </div>
+      </h2>
+    </div>
+    <a href="index.html">Back to Home page</a>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    const emojiFace = document.getElementById("emoji-face");
+    const mouthStraight = document.getElementById("mouth-straight");
+    const mouthFrown = document.getElementById("mouth-frown");
+
+    emojiFace.addEventListener("mouseenter", () => {
+      mouthStraight.style.opacity = "0";
+      mouthStraight.style.visibility = "hidden";
+      mouthFrown.style.opacity = "1";
+      mouthFrown.style.visibility = "visible";
+    });
+
+    emojiFace.addEventListener("mouseleave", () => {
+      mouthStraight.style.opacity = "1";
+      mouthStraight.style.visibility = "visible";
+      mouthFrown.style.opacity = "0";
+      mouthFrown.style.visibility = "hidden";
+    });
+
+    const eyeLeft = document.getElementById("eye-left");
+    const eyeRight = document.getElementById("eye-right");
+    const eyeLeftBlink = document.getElementById("eye-left-blink");
+    const eyeRightBlink = document.getElementById("eye-right-blink");
+
+    function blink() {
+      eyeLeft.classList.add("hidden");
+      eyeRight.classList.add("hidden");
+      eyeLeftBlink.classList.remove("hidden");
+      eyeRightBlink.classList.remove("hidden");
+
+      setTimeout(() => {
+        eyeLeft.classList.remove("hidden");
+        eyeRight.classList.remove("hidden");
+        eyeLeftBlink.classList.add("hidden");
+        eyeRightBlink.classList.add("hidden");
+      }, 200);
+    }
+
+    setInterval(blink, 2000);
+
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#0fa05d" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#0fa05d", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 3, direction: "none", out_mode: "out" }
+      },
+      retina_detect: true
+    });
+  </script>
+</body>
+
+</html>

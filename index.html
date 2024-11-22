@@ -7,6 +7,9 @@
     <title>Chan's Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Titillium+Web:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="Image/logoChan.png">
+
     <style>
         * {
             box-sizing: border-box;
@@ -22,20 +25,77 @@
             scroll-behavior: smooth;
         }
 
-        header {
-            text-align: center;
-            padding-top: 100px;
-            position: relative;
-            z-index: 1;
+        .fade-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        header h1 {
-            font-size: clamp(3rem, 5vw, 6rem);
-            color: transparent;
+        .fade-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav ul li {
+            display: inline-block;
+        }
+
+        nav ul li a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #0fa05d;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1,
+        .section h1 {
+            font-size: clamp(9vw, 50px, 6rem);
             font-family: 'Titillium Web', sans-serif;
             font-weight: 700;
-            -webkit-text-stroke: 2px #0fa05d;
+            color: transparent;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            animation: fadeInText 1.5s ease-in-out forwards;
+            -webkit-text-stroke: 2px #0fa05d;
         }
 
         .intro-text {
@@ -49,24 +109,29 @@
         }
 
         .profile-img {
-            width: 200px;
-            height: 200px;
+            width: clamp(22vw, 200px, 30rem);
+            height: auto;
             border-radius: 50%;
             border: 4px solid #0fa05d;
+            margin-top: 50px;
             margin-bottom: 20px;
             animation: bounceIn 1.5s ease-out forwards;
         }
 
         .button-container {
             display: flex;
-            gap: 15px;
-            margin-top: 40px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
+            z-index: 2;
+            width: 100%;
+            gap: 20px;
+            margin-top: 40px;
         }
 
         .animated-button {
-            width: 260px;
+            width: 300px;
+            height: 50px;
             padding: 10px;
             font-size: 18px;
             text-align: center;
@@ -85,47 +150,136 @@
             box-shadow: 0px 4px 15px rgba(15, 160, 93, 0.4);
         }
 
-        .particles-js-canvas-el {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
         @keyframes bounceIn {
-            0%, 100% { transform: scale(0.9); }
-            50% { transform: scale(1); }
+
+            0%,
+            100% {
+                transform: scale(0.9);
+            }
+
+            50% {
+                transform: scale(1);
+            }
         }
 
         @keyframes fadeInText {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .image-container {
+            max-width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            max-width: 80%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            margin-top: 20px;
+        }
+
+        .social-icons-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            font-size: clamp(3vw, 30px, 9rem);
+            color:#0fa05d;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #ffffff;
+            transform: scale(1.1);
         }
     </style>
 </head>
 
 <body>
+
     <div id="particles-js"></div>
 
-    <header>
-        <img src="Image/2x2 Christian.jpg" alt="Chan's Profile" class="profile-img animate__animated animate__zoomIn">
-        <div class="animate__animated animate__fadeInUp">
-            <h1>Hello, I'm Chan!</h1>
-            <p class="intro-text">A 3rd-year BSIT student eager to learn and become a web developer soon!</p>
-        </div>
-    </header>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contacts</a></li>
+        </ul>
+    </nav>
 
-    <section>
-        <div class="button-container animate__animated animate__fadeInUp">
-            <a href="Activity 4/project1.html" class="animated-button">Gadgets</a>
-            <a href="Activity 5/Project2.html" class="animated-button">Place</a>
-            <a href="Activity 6/index.html" class="animated-button">Gallery</a>
-            <a href="Activity 7/index.html" class="animated-button">API</a>
-            <a href="https://www.youtube.com/@cjdeclaro" class="animated-button">Youtube ng Pogi</a>
+    <div id="home" class="section fade-in">
+        <header>
+            <img src="Image/2x2 Christian.jpg" alt="Chan's Profile"
+                class="profile-img animate__animated animate__zoomIn">
+            <div class="animate__animated animate__fadeInUp">
+                <h1>Hello, I'm Chan!</h1>
+                <div class="social-icons-container">
+                    <a href="https://web.facebook.com/christian.coronado.96" target="_blank" class="social-icon animate__animated animate__bounceInUp" style="animation-delay: 0.1s;">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://github.com/ChanCoronado" target="_blank" class="social-icon animate__animated animate__bounceInUp" style="animation-delay: 0.3s;">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/chrstnpps/" target="_blank" class="social-icon animate__animated animate__bounceInUp" style="animation-delay: 0.5s;">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@chrstnpps_" target="_blank" class="social-icon animate__animated animate__bounceInUp" style="animation-delay: 0.7s;">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div id="about" class="section fade-in">
+        <div>
+            <h1>ABOUT ME</h1>
+            <p class="intro-text">Hi, I'm Chan a 20-year-old BSIT student at the Polytechnic University of the
+                Philippines Sto. Tomas Campus. I'm passionate about coding and building creative, user-friendly websites
+                as I work towards becoming a web developer.</p>
         </div>
-    </section>
+    </div>
+
+    <div id="projects" class="section fade-in">
+        <div>
+            <h1>MY PROJECTS</h1>
+            <div class="button-container">
+                <a href="Activity 4/project1.html" class="animated-button">Gadgets</a>
+                <a href="Activity 5/Project2.html" class="animated-button">Place</a>
+                <a href="Activity 6/index.html" class="animated-button">Gallery</a>
+                <a href="Activity 7/index.html" class="animated-button">API</a>
+                <a href="Midterm 01/index.html" class="animated-button">Midterm 01</a>
+                <a href="Midterm 02/banner.html" class="animated-button">Midterm 02</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="section fade-in text-center">
+        <div class="container-fluid">
+            <h1>CONTACT ME</h1>
+            <div class="image-container">
+                <img src="Image/callingCardF.png" class="img-fluid d-block mx-auto">
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
@@ -144,6 +298,33 @@
             },
             retina_detect: true
         });
+
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        function handleScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((element) => {
+                const rect = element.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                if (rect.top <= windowHeight * 0.85 && rect.bottom >= 0) {
+                    element.classList.add('visible');
+                } else {
+                    element.classList.remove('visible');
+                }
+            });
+        }
+
+        document.addEventListener('scroll', handleScroll);
+        window.onload = handleScroll;
     </script>
 </body>
 

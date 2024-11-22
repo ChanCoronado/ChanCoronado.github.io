@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIKLO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="icon" href="Activity 5/Project2 Image/logoChan.png">
+    <style>
+
+        body {
+            background-color: #000;
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .memory-card {
+            border: none;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .memory-card img {
+            object-fit: cover;
+            height: 200px;
+            transition: transform 0.3s, filter 0.3s;
+            border-radius: 10px;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        .memory-card:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .gallery-section {
+            padding: 30px 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg shadow border-body">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html">
+                <img src="Images/logoChan.png" width="78px" height="50px">
+            </a>
+        </div>
+    </nav>
+
+    <div class="container-fluid p-0 fade-in" style="position: relative; margin-bottom: 20%;">
+        <img src="Images/unoFilms.png" class="img-fluid w-100" style="max-height: 100vh; object-fit: cover; object-position: center;">
+    </div>
+    
+
+    <div class="container-fluid p-0 fade-in" style="position: relative; width: 100%; overflow: hidden;">
+        <div class="row">
+            <div class="col" style="height: 100vh;">
+                <video width="100%" autoplay muted loop playsinline>
+                    <source src="Video/Siklo (1080p).mp4" type="video/mp4">
+                </video>
+                <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0,0,0,0.7)">
+                    <div class="position-absolute top-50 start-50 translate-middle text-center">
+                        <img src="Images/unoFilms.png" class="img-fluid" style="max-width: 300px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid p-0 fade-in" style="position: relative;  margin-top: 10%;">
+        <img src="Images/siklo logo.png" class="img-fluid w-100" style="height: 100vh; object-fit: contain;">
+    </div>
+
+    <div class="container my-5 text-center fade-in" style="color: #fff;">
+        <h4 class="mb-4">𝐒𝐈𝐊𝐋𝐎 (Cycle) | A Short Film</h4>
+        <p class="mb-2"><strong>Uno Films</strong></p>
+        <p class="mb-4">
+            The short film entitled "𝐒𝐈𝐊𝐋𝐎" centers on an activist named Ajax, who was sent as a boy named Agapito during the Spanish Colonial Period of the Philippines. The protagonist was shown how the Spaniards abused our country and fellow countrymen.
+        </p>
+        <h5 class="mb-3">Starring</h5>
+        <p>Christian Coronado</p>
+        <h5 class="mb-3">Directed by:</h5>
+        <p>Jomari G. Castillo</p>
+        <h5 class="mb-3">Screenplay</h5>
+        <p>Jade Bernardo, Kaye Gamana, Justine Raymundo, & Jenna Miles Reyes</p>
+        <h5 class="mb-3">Cinematography</h5>
+        <p>Prince Karl De Grano</p>
+        <h5 class="mb-3">Editing</h5>
+        <p>Christian James Domdom Torrillo, Christian James</p>
+        <h5 class="mb-3">Cast of Characters</h5>
+        <p>
+            Christian Coronado as Ajax Dabosey & Agapito Delos Santos<br>
+            Kaye Gamana as Maxine Villar<br>
+            Kent Derilo as Mang Juanito<br>
+            Neil Vergara as Emil<br>
+            Louis Santos as Encomendero<br>
+            Ron Gabriel Ramos as Gwardiya 1 & Sundalong Espanyol 1<br>
+            Prince Karl De Grano as Sundalong Espanyol 2<br>
+            Justine Raymundo as Sundalo 1<br>
+            Christian James Domdom Torrillo as Sundalo 2<br>
+            Jomari G. Castillo as Sundalo 3<br>
+            Schann Riz as Gng. Maria<br>
+            Austine Jade Bernardo as Employer<br>
+            Johann Emmanuel De Vera as Manggagawa 1<br>
+            Jenna Miles Reyes as Manggagawa 2<br>
+            Shannen Dela Peña as Manggagawa 3
+        </p>
+        <h5 class="mb-3">𝐒𝐩𝐞𝐜𝐢𝐚𝐥 𝐓𝐡𝐚𝐧𝐤𝐬 𝐭𝐨</h5>
+        <p>
+            Justine Raymundo<br>
+            Mr. Henry Milasique<br>
+            Mr. Jairus Aguila<br>
+            Museo ng Bahay ni Jose Rizal<br>
+            St. John the Baptist Church<br>
+            Malvar Shrine
+        </p>
+        <h5 class="mb-3">𝐈𝐧 𝐏𝐚𝐫𝐭𝐢𝐚𝐥 𝐅𝐮𝐥𝐟𝐢𝐥𝐥𝐦𝐞𝐧𝐭 𝐨𝐟 𝐭𝐡𝐞 𝐑𝐞𝐪𝐮𝐢𝐫𝐞𝐦𝐞𝐧𝐭𝐬 𝐟𝐨𝐫 𝐑𝐞𝐚𝐝𝐢𝐧𝐠𝐬 𝐢𝐧 𝐏𝐡𝐢𝐥𝐢𝐩𝐩𝐢𝐧𝐞 𝐇𝐢𝐬𝐭𝐨𝐫𝐲</h5>
+        <p>
+            Mr. Jairus Aguila<br>
+            Polytechnic University of the Philippines<br>
+            Sto. Tomas Batangas Branch<br>
+            BSIT 1-1<br>
+            S.Y 2023-2024
+        </p>
+        <p class="mt-4">
+            <strong>"SIKLO" is now streaming on YouTube:</strong><br>
+            <a href="https://www.youtube.com/watch?v=emOi02apKng" target="_blank" style="color: #ffc107;">https://www.youtube.com/watch?v=emOi02apKng</a>
+        </p>
+        <p class="mt-3">
+            <em>#Siklo #UnoFilms #PUPSTB #ShortFilm</em>
+        </p>
+    </div>
+    
+
+    <div class="container my-5 fade-in">
+        <div class="row g-4">
+            <div class="col-6">
+                <video width="100%" autoplay muted loop playsinline>
+                    <source src="Video/vid1.MOV" type="video/mp4">
+                </video>
+            </div>
+            <div class="col-6">
+                <video width="100%" autoplay muted loop playsinline>
+                    <source src="Video/vid2.MOV" type="video/mp4">
+                </video>
+            </div>
+            <div class="col-6">
+                <video width="100%" autoplay muted loop playsinline>
+                    <source src="Video/vid3.MOV" type="video/mp4">
+                </video>
+            </div>
+            <div class="col-6">
+                <video width="100%" autoplay muted loop playsinline>
+                    <source src="Video/vid4.MOV" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div class="container gallery-section fade-in">
+        <div id="photoContainer" class="row g-3"></div>
+    </div>
+
+    <script>
+     
+        var sikloFam = [
+            "Images/img1.jpg", "Images/img2.jpg", "Images/img3.jpg", "Images/img4.jpg", "Images/img5.jpg", "Images/img6.jpg", "Images/img7.jpg", "Images/img8.jpg", "Images/img9.jpg", "Images/img10.jpg",
+            "Images/img11.jpg", "Images/img12.jpg", "Images/img13.jpg", "Images/img14.jpg", "Images/img15.jpg", "Images/img16.jpg", "Images/img17.jpg", "Images/img18.jpg", "Images/img19.jpg", "Images/img20.jpg",
+            "Images/img21.jpg", "Images/img22.jpg", "Images/img23.jpg", "Images/img24.jpg", "Images/img25.jpg", "Images/img26.jpg", "Images/img27.jpg", "Images/img28.jpg", "Images/img29.jpg", "Images/img30.jpg",
+            "Images/img31.jpg", "Images/img32.jpg", "Images/img33.jpg", "Images/img34.jpg", "Images/img35.jpg", "Images/img36.jpg", "Images/img37.jpg", "Images/img38.jpg", "Images/img39.jpg", "Images/img40.jpg",
+            "Images/img41.jpg", "Images/img42.jpg", "Images/img43.jpg", "Images/img44.jpg", "Images/img45.jpg", "Images/img46.jpg", "Images/img47.jpg", "Images/img48.jpg", "Images/img49.jpg", "Images/img50.jpg",
+            "Images/img51.jpg", "Images/img52.jpg", "Images/img53.jpg", "Images/img54.jpg", "Images/img55.jpg", "Images/img56.jpg", "Images/img57.jpg", "Images/img58.jpg", "Images/img59.jpg", "Images/img60.jpg",
+            "Images/img61.jpg", "Images/img62.jpg", "Images/img63.jpg", "Images/img64.jpg", "Images/img65.jpg", "Images/img66.jpg", "Images/img67.jpg", "Images/img68.jpg", "Images/img69.jpg", "Images/img70.jpg",
+            "Images/img71.jpg", "Images/img72.jpg", "Images/img73.jpg", "Images/img74.jpg", "Images/img75.jpg", "Images/img76.jpg", "Images/img77.jpg", "Images/img78.jpg", "Images/img79.jpg", "Images/img80.jpg",
+            "Images/img81.jpg", "Images/img82.jpg", "Images/img83.jpg", "Images/img84.jpg", "Images/img85.jpg", "Images/img86.jpg", "Images/img87.jpg", "Images/img88.jpg", "Images/img89.jpg", "Images/img90.jpg",
+            "Images/img91.jpg", "Images/img92.jpg", "Images/img93.jpg", "Images/img94.jpg", "Images/img95.jpg", "Images/img96.jpg", "Images/img97.jpg", "Images/img98.jpg", "Images/img99.jpg", "Images/img100.jpg",
+            "Images/img101.jpg", "Images/img102.jpg", "Images/img103.jpg", "Images/img104.jpg", "Images/img105.jpg", "Images/img106.jpg", "Images/img107.jpg", "Images/img108.jpg", "Images/img109.jpg", "Images/img110.jpg",
+            "Images/img111.jpg", "Images/img112.jpg", "Images/img113.jpg", "Images/img114.jpg", "Images/img115.jpg", "Images/img116.jpg"
+        ];
+
+        for (var i = 0; i < sikloFam.length; i++) {
+            var myContainer = document.getElementById("photoContainer");
+            myContainer.innerHTML += `
+                <div class="col-6 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="card memory-card">
+                        <img src="${sikloFam[i]}" class="card-img-top">
+                    </div>
+                </div>`;
+        }
+
+        function handleScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((element) => {
+                const rect = element.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                if (rect.top <= windowHeight * 0.85 && rect.bottom >= 0) {
+                    element.classList.add('visible');
+                } else {
+                    element.classList.remove('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
