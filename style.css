@@ -419,7 +419,6 @@ section.active {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 100%;
-    gap: 2rem;
     height: inherit;
     transition: .5s;
 }
@@ -587,7 +586,6 @@ section.active {
     color: var(--main-color);
 
 }
-
 
 @media (max-width: 768px) {
     .img-slide {

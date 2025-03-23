@@ -11,7 +11,7 @@
     --bg-color: #213025;
     --second-bg-color: #47663B;
     --main-color: #94a35c;
-    --white-color: #d7daa9;  
+    --white-color: #d7daa9;
     --disabled-color: #fff3;
 }
 
@@ -59,17 +59,57 @@ body {
     margin: 0 10px;
     display: flex;
     align-items: flex-end;
-    transition: .6s cubic-bezier(.28,-0.03,0,.99);
-    box-shadow: 0px 15px 20px rgba(0,0,0,0.4);
+    transition: .6s cubic-bezier(.28, -0.03, 0, .99);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
 }
 
-.card > .row {
+.btn-view {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--white-color);
+    background: rgba(255, 255, 255, 0.15); 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    padding: 12px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.3rem;
+    transition: all 0.4s ease-in-out;
+    opacity: 0;
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px); 
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); 
+}
+
+.btn-view:hover {
+    background: rgba(255, 255, 255, 0.25); 
+    box-shadow: 0 6px 25px rgba(255, 255, 255, 0.4); 
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.btn-view:active {
+    transform: translate(-50%, -50%) scale(0.95);
+    backdrop-filter: blur(25px);
+}
+
+input:checked+label:hover .btn-view {
+    opacity: 1;
+}
+
+input:checked+label {
+    backdrop-filter: blur(5px);
+}
+
+.card>.row {
     color: var(--white-color);
     display: flex;
     flex-wrap: nowrap;
 }
 
-.card > .row > .icon {
+.card>.row>.icon {
     background: var(--second-bg-color);
     color: var(--white-color);
     border-radius: 50%;
@@ -80,7 +120,7 @@ body {
     margin: 15px;
 }
 
-.card > .row > .description {
+.card>.row>.description {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -92,53 +132,6 @@ body {
     transition-delay: .3s;
     transition: all .3s ease;
 }
-
-.view-btn {
-    align-items: center;
-    justify-content: center;
-    background: var(--main-color);
-    color: var(--white-color);
-    border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: 0.4s ease-in-out;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, 20px); 
-    opacity: 0; 
-    backdrop-filter: blur(10px);
-}
-
-.view-btn:hover {
-    background: var(--second-bg-color);
-    transform: scale(2);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-input:checked + label .view-btn {
-    opacity: 1; 
-    transform: translate(-50%, -50%); 
-    transition: 0.5s ease-in-out 0.3s; 
-}
-
-.glass-card {
-    position: relative;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .glass-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  }
-
 
 .description p {
     color: var(--main-color);
@@ -153,91 +146,112 @@ input {
     display: none;
 }
 
-input:checked + label {
+input:checked+label {
     width: 600px;
 }
 
-input:checked + label .description {
+input:checked+label .description {
     opacity: 1 !important;
     transform: translateY(0) !important;
 }
 
-.card[for="c1"] {
-    background-image: url();
+.iframe-container {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
 }
+
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.card[for="c1"] {
+    background-image: url(../Image/test.jpg);
+}
+
 .card[for="c2"] {
     background-image: url();
 }
+
 .card[for="c3"] {
     background-image: url();
 }
+
 .card[for="c4"] {
     background-image: url();
 }
+
 .card[for="c5"] {
     background-image: url();
 }
+
 .card[for="c6"] {
     background-image: url();
 }
 
 
-    @media (max-width: 1100px) {
-        .container {
-            justify-content: center;
-            overflow-x: auto;
-        }
-    
-        .card {
-            width: 120px;
-            height: 250px;
-        }
-    
-        input:checked + label {
-            width: 350px;
-        }
+@media (max-width: 1100px) {
+    .container {
+        justify-content: center;
+        overflow-x: auto;
     }
-    
-    @media (max-width: 768px) {
-        .container {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 10px;
-            box-shadow: none; 
-            
-        }
-    
-        .card {
-            width: 100%;
-            height: 10vh;
-            margin-bottom: 20px;
-        }
-    
-        input:checked + label {
-            width: 100%;
-        }
+
+    .card {
+        width: 120px;
+        height: 250px;
     }
-    
-    @media (max-width: 480px) {
-        .heading {
-            font-size: 1.8rem;
-        }
-    
-        .container {
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            overflow-x: auto;
-            gap: 5px;
-        }
-    
-        .card {
-            width: 90px;
-            height: 180px;
-        }
-    
-        input:checked + label {
-            width: 220px;
-        }
+
+    input:checked+label {
+        width: 350px;
     }
-    
+}
+
+@media (max-width: 768px) {
+    .container {
+
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+        box-shadow: none;
+        overflow-x: auto;
+
+    }
+
+    .card {
+        width: 5rem;
+        height: 23.7rem;
+        margin-bottom: 30px;
+    }
+
+    input:checked+label {
+        width: 370px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .heading {
+        font-size: 1.8rem;
+    }
+
+    .container {
+        flex-direction: row;
+        grid-template-columns: repeat(1, 1fr);
+        align-items: center;
+        justify-content: center;
+        overflow-x: auto;
+        gap: 5px;
+    }
+
+    .card {
+        width: 5rem;
+        height: 23.7rem;
+    }
+
+    input:checked+label {
+        width: 300px;
+    }
+}
