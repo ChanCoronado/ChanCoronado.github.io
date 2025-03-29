@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 
 :root {
@@ -11,9 +11,10 @@
 
 
 
-    --body-font: "Bai Jamjuree", sans-serif;
+    --body-font: "Poppins", sans-serif;
     --h2-font-size: 1.25rem;
     --normal-font-size: 1rem;
+
 }
 
 
@@ -41,9 +42,9 @@ img {
 }
 
 .heading {
-    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-size: clamp(1.4rem, 5vw, 3rem);
     text-align: center;
-    padding-top: 60px;
+    padding-top: 50px;
     color: var(--white-color);
 }
 
@@ -60,7 +61,7 @@ img {
 }
 
 .card__container {
-    padding-block: 5rem;
+    padding-block: 4.2rem;
 }
 
 .card__content {
@@ -170,8 +171,8 @@ img {
     }
 }
 
-
 @media screen and (min-width: 768px) {
+    
     .card__content {
         margin-inline: 3rem;
     }
@@ -181,7 +182,6 @@ img {
         display: block;
     }
 }
-
 
 @media screen and (min-width: 1120px) {
     .card__container {
