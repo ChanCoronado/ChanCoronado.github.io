@@ -185,7 +185,7 @@ if (isset($_GET['page'])) {
                     </ul>
                 
                     <div class="px-0 py-5">
-                        <a href="../../index.php" class="nav-link text-white px-3 py-2 rounded-2 d-flex align-items-center">
+                        <a href="../../index.html" class="nav-link text-white px-3 py-2 rounded-2 d-flex align-items-center">
                             <i class="fa-solid fa-right-from-bracket me-2"style="color: red;"></i> <span style="color: red; font-weight: 500;">Exit</span>
                         </a>
                     </div>
