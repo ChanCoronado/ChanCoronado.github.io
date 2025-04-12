@@ -21,8 +21,8 @@
       margin: 0;
       padding: 0;
       font-family: 'Poppins', sans-serif;
-      color: #f0f0f0;
-      background: #121212;
+      color: #d7daa9;
+      background: #213025;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -42,7 +42,7 @@
       font-size: 23vw;
       color: transparent;
       font-family: 'Pixel Emulator', sans-serif;
-      -webkit-text-stroke: 2px #0fa05d;
+      -webkit-text-stroke: 2px #94a35c;
       margin-bottom: 20px;
       text-transform: uppercase;
       display: flex;
@@ -100,9 +100,9 @@
       padding: 10px;
       font-size: 16px;
       text-align: center;
-      color: white;
+      color: #d7daa9;
       text-decoration: none;
-      border: 2px solid #0fa05d;
+      border: 2px solid #47663B;
       background-color: transparent;
       border-radius: 10px;
       transition: all 0.4s ease;
@@ -110,10 +110,10 @@
     }
 
     a:hover {
-      background-color: #0fa05d;
-      color: black;
+      background-color: #213025;
+      color: #94a35c;
       transform: translateY(-5px) scale(1.05);
-      box-shadow: 0px 4px 15px rgba(15, 160, 93, 0.4);
+      box-shadow: 0px 4px 15px #94a35c;
     }
 
     #particles-js {
@@ -148,7 +148,7 @@
             height="230" viewBox="0 0 230 230">
             <title id="svgTitleID">Pixelated emoji face</title>
             <g id="Page-1" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
-              <g id="okay-emoji" fill="#0fa05d">
+              <g id="okay-emoji" fill="#94a35c">
                 <g id="face-shape-circle" style="opacity: 1; visibility: inherit;">
                   <g id="face-shape-circle-group">
                     <polygon id="face-shape-circle-24" points="220 80 220 150 230 150 230 80"></polygon>
@@ -230,7 +230,7 @@
         </div>
       </h2>
     </div>
-    <a href="index.html">Back to Home page</a>
+    <a href="index.php">Back to Home page</a>
   </div>
 
 
@@ -279,11 +279,11 @@
     particlesJS("particles-js", {
       particles: {
         number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: "#0fa05d" },
+        color: { value: "#94a35c" },
         shape: { type: "circle" },
         opacity: { value: 0.5 },
         size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: "#0fa05d", opacity: 0.4, width: 1 },
+        line_linked: { enable: true, distance: 150, color: "#94a35c", opacity: 0.4, width: 1 },
         move: { enable: true, speed: 3, direction: "none", out_mode: "out" }
       },
       retina_detect: true

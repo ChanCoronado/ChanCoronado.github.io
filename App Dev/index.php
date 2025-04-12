@@ -24,17 +24,17 @@
                 <div class="swiper-wrapper">
                     <article class="card__article swiper-slide">
                         <div class="card__image">
-                            <img src="assets/img/Iphone 13.png" class="card__img">
+                            <img src="assets/img/A02.png" class="card__img">
                             <div class="card__shadow"></div>
                         </div>
 
                         <div class="card__data">
-                            <h3 class="card__name">1</h3>
+                            <h3 class="card__name">A02</h3>
                             <p class="card__description">
-                                1
+                                MVC
                             </p>
 
-                            <a href="Activity 4/project1.html" class="card__button">View More</a>
+                            <a href="A02/index.php" class="card__button">View More</a>
                         </div>
                     </article>
 

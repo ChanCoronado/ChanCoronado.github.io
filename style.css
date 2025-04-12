@@ -939,8 +939,16 @@ section.active {
             bottom: 8rem;
 
         }
-
     }
+
+    @media only screen and (max-width: 390px) {
+
+    .project-box .navigation {
+        bottom: 10rem;
+      }
+    }
+    
+      
 
     @media screen and (max-width: 375px) {
         .home-detail {
