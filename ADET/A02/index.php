@@ -164,13 +164,13 @@ if (isset($_GET['page'])) {
                         <li class="nav-item text-muted small px-3 mt-2">Library</li>
                         <li class="nav-item my-1">
                             <a class="nav-link <?= ($_GET['page'] ?? '') == 'home' ? 'active bg-info text-dark fw-semibold rounded-2' : 'text-white' ?> px-3 py-2"
-                                href="index.php?page=home">
+                                href="?page=home">
                                 <i class="fa-solid fa-house me-2"></i> Home
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?= ($_GET['page'] ?? '') == 'files' ? 'active bg-info text-dark fw-semibold rounded-2' : 'text-white' ?> px-3 py-2"
-                                href="index.php?page=files">
+                                href="?page=files">
                                 <i class="fa-solid fa-bars me-2"></i> Files
                             </a>
                         </li>
@@ -178,7 +178,7 @@ if (isset($_GET['page'])) {
                         <li class="nav-item text-muted small px-3 mt-3">Browse</li>
                         <li class="nav-item my-1">
                             <a class="nav-link <?= ($_GET['page'] ?? '') == 'exams' ? 'active bg-info text-dark fw-semibold rounded-2' : 'text-white' ?> px-3 py-2"
-                                href="index.php?page=exams">
+                                href="?page=exams">
                                 <i class="fa-solid fa-clipboard-question me-2"></i> Exams
                             </a>
                         </li>
