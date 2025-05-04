@@ -1,0 +1,985 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CHANPOP </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="icon" href="assets/img/chanPop.png">
+    <style>
+        body {
+            background-color: #F3F3FA;
+        }
+
+        .categories {
+            width: fit-content;
+        }
+
+        .maincontainer {
+            height: 75dvh;
+        }
+
+        .hide-scrollbar {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+
+        }
+
+        .buy-button {
+            color: #F3F3FA;
+            background-color: #05052b;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background-color: #F3F3FA;
+
+            color: #05052b;
+        }
+
+
+        .receiptContainer {
+            background-color: #F3F3FA;
+            color: #05052b;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #receipt {
+            overflow-y: auto;
+            flex: 1 1 auto;
+            max-height: 600px;
+        }
+
+        .receipt-footer {
+            flex-shrink: 0;
+            background-color: #F3F3FA;
+            padding-top: 1rem;
+            border-top: 1px solid #ccc;
+        }
+
+        .btn-checkout {
+            background-color: #05052b;
+            color: #F3F3FA;
+            border: none;
+            width: 100%;
+            font-family: 'Courier New', monospace;
+        }
+
+        .btn-checkout:hover {
+            background-color: #258118;
+            color: #F3F3FA;
+        }
+
+        .btn-secondary {
+            background-color: #88888d;
+            color: #1b1b1b;
+            border: none;
+            width: 100%;
+            font-family: 'Courier New', monospace;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5b1c1c;
+            color: #F3F3FA;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row pt-3">
+
+            <nav class="navbar" style="background-color: #F3F3FA; position: relative;">
+                <div class="container-fluid my-2 d-flex align-items-center position-relative">
+                    <a class="navbar-brand d-flex align-items-center" href="../../index.html" style="text-decoration: none;">
+                        <img src="assets/img/chanPop.png" class="img-fluid ms-2"
+                            style="height: clamp(40px, 10vw, 120px); width: auto; margin-right: 50px;">
+                    </a>
+                    <h1
+                        style=" font-family: ProximaNova-Black, sans-serif; position: absolute; left: 50%; transform: translateX(-50%); 
+                        font-size: clamp(1.5rem, 6vw, 5rem); font-weight: 900; color: #020202; margin: 0; white-space: nowrap;">
+                        CHANPOP STORE
+                    </h1>
+                </div>
+            </nav>
+
+            <div class="d-flex align-items-center">
+                <!-- BURGER -->
+                <button class="btn btn-light d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#sideBar">
+                    <i class="bi bi-list fs-3"></i>
+                </button>
+            </div>
+
+            <!-- 1ST COLUMN -->
+            <div class="col-md-2 d-none d-md-block mt-1">
+                <div class="card p-3" style="max-height: clamp(500px, 80vh, 780px); background-color: #05052b;">
+
+                    <div id="categories" class="d-flex flex-column gap-1 overflow-auto hide-scrollbar"
+                        style="max-height: 90%;">
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="offcanvas offcanvas-start d-lg-none " tabindex="-1" id="sideBar">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title"
+                        style="font-family: ProximaNova-Black, sans-serif; position: absolute; left: 50%; transform: translateX(-50%); 
+                    font-size: clamp(1.5rem, 3vw, 4rem); font-weight: 900; color: #020202; margin: 0; white-space: nowrap;">CHANPOP STORE</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body d-flex flex-column gap-4 card p-3 hide-scrollbar"
+                    style="max-height: clamp(800px, 110vh, 800px); background-color: #05052b;" id="categoriesToggle">
+
+                </div>
+            </div>
+
+            <!-- 2ND COLUMN -->
+            <div class="col-md-7 col-sm-12   mt-1" style="height: 80vh; overflow-y: auto;">
+                <div class="row">
+                    <div class="col">
+                        <div class="d-flex flex-row flex-wrap hide-scrollbar" id="maincontainer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3RD COLUMN -->
+            <div class="col-md-3 col-sm-12 mt-1">
+                <div class="card p-3 receiptContainer"
+                    style="border: none; box-shadow: none; font-family: 'Courier New', monospace;  font-size: large; font-weight: 600;">
+
+                    <div id="receipt"></div>
+
+                    <div class="receipt-footer mt-3">
+                        <div class="d-flex flex-row justify-content-between mb-2">
+                            <div><b>TOTAL:</b></div>
+                            <div><b><span>₱</span><span id="totalValue">0</span></b></div>
+                        </div>
+                        <button class="btn btn-checkout" onclick="openReceiptModal()">Checkout</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- RECEIPT MODAL -->
+            <div class="modal fade" id="receiptModal" tabindex="-1" aria-labelledby="receiptModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content" style="background-color: #F3F3FA; color: #05052b;">
+                        <div class="modal-header border-0">
+                            <h5 class="modal-title w-100 text-center" id="receiptModalLabel">🧾 Receipt</h5>
+                            <button type="button" class="btn-close position-absolute end-0 me-2" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body p-3" style=" font-family: 'Courier New', monospace;">
+                            <div id="modalReceiptItems"
+                                style="max-height: 200px; overflow-y: auto; border-top: 1px dashed #05052b; border-bottom: 1px dashed #05052b; padding: 10px 0;">
+
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-3">
+                                <div><strong>Total:</strong></div>
+                                <div><strong>₱<span id="modalTotalValue">0.00</span></strong></div>
+                            </div>
+
+                            <div class="mt-3 text-center">
+                                <p>Proceed with checkout?</p>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer border-0 d-flex justify-content-center">
+                            <button type="button" class="btn btn-checkout btn-sm w-100 ms-1">Yes, Checkout</button>
+                            <button type="button" class="btn btn-secondary btn-sm w-100 me-1"
+                                data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var products = [
+            {
+                "category": "JUJUTSU",
+                "image": "Pop! & Buddy Megumi Fushiguro with Rabbits, , hi-res.png",
+                "contents": [
+                    {
+                        "name": "Pop! Nobara Kugisaki",
+                        "image": "Pop! Nobara Kugisaki, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Yuji Itadori",
+                        "image": "Pop! Yuji Itadori, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Kasumi Miwa",
+                        "image": "Pop! Kasumi Miwa, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Noritoshi Kamo",
+                        "image": "Pop! Noritoshi Kamo, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Ultimate Mechamaru",
+                        "image": "Pop! Ultimate Mechamaru, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Ryomen Sukuna in Kimono",
+                        "image": "Pop! Ryomen Sukuna in Kimono, , hi-res.png",
+                        "price": "680"
+                    },
+                    {
+                        "name": "Pop! Satoru Gojo",
+                        "image": "Pop! Satoru Gojo, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Deluxe Satoru Gojo using Hollow Technique_ Purple",
+                        "image": "Pop! Deluxe Satoru Gojo using Hollow Technique_ Purple, , hi-res.png",
+                        "price": "700"
+                    },
+                    {
+                        "name": "Pop! Nobara Kugisaki with Paint Can",
+                        "image": "Pop! Nobara Kugisaki with Paint Can, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Yuji Itadori with Paint Can",
+                        "image": "Pop! Yuji Itadori with Paint Can, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Megumi Fushiguro",
+                        "image": "Pop! Megumi Fushiguro, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! & Buddy Megumi Fushiguro with Rabbits",
+                        "image": "Pop! & Buddy Megumi Fushiguro with Rabbits, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Choso (Piercing Blood)",
+                        "image": "Pop! Choso (Piercing Blood), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Plus Nobara Kugisaki",
+                        "image": "Pop! Plus Nobara Kugisaki, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Plus Yuji Itadori (Divergent Fist)",
+                        "image": "Pop! Plus Yuji Itadori (Divergent Fist), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Satoru Gojo (Cursed Technique Lapse_ Blue)",
+                        "image": "Pop! Satoru Gojo (Cursed Technique Lapse_ Blue), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Toji Fushiguro (Possessed)",
+                        "image": "Pop! Toji Fushiguro (Possessed), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Ryomen Sukuna (Fire Arrow)",
+                        "image": "Pop! Ryomen Sukuna (Fire Arrow), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Premium Suguru Geto with Cursed Spirit Dragon",
+                        "image": "Pop! Premium Suguru Geto with Cursed Spirit Dragon, , hi-res.png",
+                        "price": "680"
+                    }
+                ]
+            },
+
+            {
+                "category": "NARUTO",
+                "image": "Pop! Naruto Uzumaki with Scroll, , hi-res.png",
+                "contents": [
+                    {
+                        "name": "Pop! Naruto Uzumaki with Scroll",
+                        "image": "Pop! Naruto Uzumaki with Scroll, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Iruka Umino",
+                        "image": "Pop! Iruka Umino, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Pain",
+                        "image": "Pop! Pain, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Sakura",
+                        "image": "Pop! Sakura, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Kakashi",
+                        "image": "Pop! Kakashi, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Choji Akimichi",
+                        "image": "Pop! Choji Akimichi, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Boruto with Rasengan",
+                        "image": "Pop! Boruto with Rasengan, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Super Naruto (Baryon Mode) (Glow)",
+                        "image": "Pop! Super Naruto (Baryon Mode) (Glow), , hi-res.png",
+                        "price": "700"
+                    },
+                    {
+                        "name": "Pop! Might Guy Winking",
+                        "image": "Pop! Might Guy Winking, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Shikadai Nara",
+                        "image": "Pop! Shikadai Nara, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Hidan",
+                        "image": "Pop! Hidan, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Shisui Uchiha with Kunai",
+                        "image": "Pop! Shisui Uchiha with Kunai, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Temari",
+                        "image": "Pop! Temari, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Tenten",
+                        "image": "Pop! Tenten, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Obito Uchiha (Kid)",
+                        "image": "Pop! Obito Uchiha (Kid), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Hinata Hyuga (Lion Fist Battle Pose)",
+                        "image": "Pop! Hinata Hyuga (Lion Fist Battle Pose), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Plus Neji Hyuga",
+                        "image": "Pop! Plus Neji Hyuga, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Jiraiya (Jutsu)",
+                        "image": "Pop! Jiraiya (Jutsu), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Naruto Uzumaki with Kunai & Shuriken",
+                        "image": "Pop! Naruto Uzumaki with Kunai & Shuriken, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Moment Madara (Susano'o)",
+                        "image": "Pop! Moment Madara (Susano'o), , hi-res.png",
+                        "price": "700"
+                    },
+                    {
+                        "name": "Pop! Itachi Uchiha (Edo Itachi)",
+                        "image": "Pop! Itachi Uchiha (Edo Itachi), , hi-res.png",
+                        "price": "650"
+                    }
+                ]
+            },
+
+            {
+                "category": "DRAGON BALL",
+                "image": "Pop! Goku with Nyoibou, , hi-res.png",
+                "contents": [
+                    {
+                        "name": "Pop! Krillin (Kid)",
+                        "image": "Pop! Krillin (Kid), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Goku with Nyoibou",
+                        "image": "Pop! Goku with Nyoibou, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Kid Buu",
+                        "image": "Pop! Kid Buu, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Master Roshi with Staff",
+                        "image": "Pop! Master Roshi with Staff, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Shin",
+                        "image": "Pop! Shin, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Trunks & Gill",
+                        "image": "Pop! Trunks & Gill, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Super Saiyan 3 Kid Goku",
+                        "image": "Pop! Super Saiyan 3 Kid Goku, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Majin Vegeta",
+                        "image": "Pop! Majin Vegeta, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Vegeta with Scouter",
+                        "image": "Pop! Vegeta with Scouter, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Goku (Ultra Instinct)",
+                        "image": "Pop! Goku (Ultra Instinct), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Super Saiyan Goku with Kamehameha",
+                        "image": "Pop! Super Saiyan Goku with Kamehameha, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Super Saiyan Goku",
+                        "image": "Pop! Super Saiyan Goku, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Goku with Tail (Kamehameha)",
+                        "image": "Pop! Goku with Tail (Kamehameha), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Son Gohan (Beast) (Powering Up)",
+                        "image": "Pop! Son Gohan (Beast) (Powering Up), , hi-res.png",
+                        "price": "700"
+                    },
+                    {
+                        "name": "Pop! Kid Goku in Saiyan Armor",
+                        "image": "Pop! Kid Goku in Saiyan Armor, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Orange Piccolo",
+                        "image": "Pop! Orange Piccolo, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Gogeta (Dragon Ball Super_ Broly)",
+                        "image": "Pop! Gogeta (Dragon Ball Super_ Broly), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Super Saiyan God Vegeta with Aura",
+                        "image": "Pop! Super Saiyan God Vegeta with Aura, , hi-res.png",
+                        "price": "700"
+                    }
+                ]
+            },
+
+            {
+                "category": "POKEMON",
+                "image": "Pop! Pikachu, , hi-res.png",
+                "contents": [
+                    {
+                        "name": "Pop! Horsea",
+                        "image": "Pop! Horsea, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Squirtle",
+                        "image": "Pop! Squirtle, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Charmander",
+                        "image": "Pop! Charmander, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Mewtwo",
+                        "image": "Pop! Mewtwo, , hi-res.png",
+                        "price": "680"
+                    },
+                    {
+                        "name": "Pop! Pikachu",
+                        "image": "Pop! Pikachu, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Pikachu in Attack Stance",
+                        "image": "Pop! Pikachu in Attack Stance, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Charizard",
+                        "image": "Pop! Charizard, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Raichu",
+                        "image": "Pop! Raichu, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Jumbo Luxray",
+                        "image": "Pop! Jumbo Luxray, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Arcanine",
+                        "image": "Pop! Arcanine, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Chimchar",
+                        "image": "Pop! Chimchar, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Aipom",
+                        "image": "Pop! Aipom, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Greninja",
+                        "image": "Pop! Greninja, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Sprigatito",
+                        "image": "Pop! Sprigatito, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Quaxly",
+                        "image": "Pop! Quaxly, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Zorua",
+                        "image": "Pop! Zorua, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Gengar",
+                        "image": "Pop! Gengar, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Fuecoco",
+                        "image": "Pop! Fuecoco, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Gardevoir",
+                        "image": "Pop! Gardevoir, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Fidough",
+                        "image": "Pop! Fidough, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Dratini",
+                        "image": "Pop! Dratini, , hi-res.png",
+                        "price": "650"
+                    }
+                ]
+            },
+
+            {
+                "category": "MY HERO ACADEMIA",
+                "image": "Pop! Infinite Deku with Eri, , hi-res.png",
+                "contents": [
+                    {
+                        "name": "Pop! Infinite Deku with Eri",
+                        "image": "Pop! Infinite Deku with Eri, , hi-res.png",
+                        "price": "700"
+                    },
+                    {
+                        "name": "Pop! Hawks",
+                        "image": "Pop! Hawks, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Super Fatgum",
+                        "image": "Pop! Super Fatgum, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Dabi with Flames",
+                        "image": "Pop! Dabi with Flames, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Deluxe Tomura Shigaraki in Chair",
+                        "image": "Pop! Deluxe Tomura Shigaraki in Chair, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Mirio Togata",
+                        "image": "Pop! Mirio Togata, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Shoto Todoroki in Casual Clothes",
+                        "image": "Pop! Shoto Todoroki in Casual Clothes, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Ochaco Uraraka",
+                        "image": "Pop! Ochaco Uraraka, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! All Might (Texas Smash)",
+                        "image": "Pop! All Might (Texas Smash), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Nana Shimura",
+                        "image": "Pop! Nana Shimura, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Plus Katsuki Bakugo",
+                        "image": "Pop! Plus Katsuki Bakugo, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Star and Stripe",
+                        "image": "Pop! Star and Stripe, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Stain",
+                        "image": "Pop! Stain, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Plus Tomura Shigaraki",
+                        "image": "Pop! Plus Tomura Shigaraki, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Izuku Midoriya (Hooded)",
+                        "image": "Pop! Izuku Midoriya (Hooded), , hi-res.png",
+                        "price": "650"
+                    }
+                ]
+            },
+
+            {
+                "category": "ONE PIECE",
+                "image": "Pop! Luffy Gear Five, , hi-res.png",
+                "contents": [
+                    {
+                        "name": "Pop! Emporio Ivankov with Pop! Protector",
+                        "image": "Pop! Emporio Ivankov with Pop! Protector, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Orobi in Wano Outfit",
+                        "image": "Pop! Orobi in Wano Outfit, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Luffytaro",
+                        "image": "Pop! Luffytaro, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Super Kaido",
+                        "image": "Pop! Super Kaido, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Snake-Man Luffy",
+                        "image": "Pop! Snake-Man Luffy, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Super Child Big Mom",
+                        "image": "Pop! Super Child Big Mom, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Roronoa Zoro",
+                        "image": "Pop! Roronoa Zoro, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Rides Deluxe Vivi & Karoo",
+                        "image": "Pop! Rides Deluxe Vivi & Karoo, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Plus Boa Hancock with Pop! Protector",
+                        "image": "Pop! Plus Boa Hancock with Pop! Protector, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Vinsmoke Sanji",
+                        "image": "Pop! Vinsmoke Sanji, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Luffy Gear Five",
+                        "image": "Pop! Luffy Gear Five, , hi-res.png",
+                        "price": "700"
+                    },
+                    {
+                        "name": "Pop! Nami (Crying)",
+                        "image": "Pop! Nami (Crying), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Sanji in Love",
+                        "image": "Pop! Sanji in Love, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Deluxe Buggy the Clown",
+                        "image": "Pop! Deluxe Buggy the Clown, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Borsalino",
+                        "image": "Pop! Borsalino, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Roronoa Zoro (Three Sword Style) (Glow)",
+                        "image": "Pop! Roronoa Zoro (Three Sword Style) (Glow), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Bartholomew Kuma with Pop! Protector",
+                        "image": "Pop! Bartholomew Kuma with Pop! Protector, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Plus King",
+                        "image": "Pop! Plus King, , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Eustass Kid (Awakening)",
+                        "image": "Pop! Eustass Kid (Awakening), , hi-res.png",
+                        "price": "650"
+                    },
+                    {
+                        "name": "Pop! Trafalgar Law (Glow)",
+                        "image": "Pop! Trafalgar Law (Glow), , hi-res.png",
+                        "price": "650"
+                    }
+                ]
+            }
+
+        ]
+
+        var total = 0;
+
+        function loadCategories() {
+            var categoriesContainer = document.getElementById("categories");
+
+            products.forEach((product, index) => {
+                categoriesContainer.innerHTML += `
+                    <button onclick="loadProducts('`+ index + `')" class="btn btn-light d-flex flex-column align-items-center my-2">
+                        <img src="assets/img/`+ product.image + `" alt="` + product.category + `"
+                            style="width: clamp(140px, 22vw, 180px); height: clamp(140px, 24vw, 180px); object-fit: cover;">
+
+                        <span class="fw-bold mt-2"
+                            style="font-family: ProximaNova-Black, sans-serif;">`+ product.category + `</span>
+                    </button>
+        `;
+            });
+        }
+
+        function loadCategoriesToggle() {
+            var categoriesContainerToggle = document.getElementById("categoriesToggle");
+
+            products.forEach((product, index) => {
+                categoriesContainerToggle.innerHTML += `
+                    <button onclick="loadProductsAndClose('`+ index + `')" class="btn btn-light d-flex flex-column align-items-center">
+                           <img src="assets/img/`+ product.image + `" alt="'` + product.category + `'"
+                            style="width: 220px; height: 200px; object-fit: cover;">
+                        <span class="fw-bold mt-2" style="font-family: ProximaNova-Black, sans-serif;">`+ product.category + `</span>
+                    </button>
+        `;
+            });
+        }
+
+        function loadProducts(categoryIndex) {
+            var maincontainer = document.getElementById("maincontainer");
+            maincontainer.innerHTML = "";
+
+            var product = products[categoryIndex];
+
+            product.contents.forEach(content => {
+                maincontainer.innerHTML += `
+                     <div class="card shadow rounded-4 m-1 d-flex justify-content-center" style="width: 352px; height: 370px">
+                        <div class="position-relative d-flex justify-content-center align-items-center">
+                            <img src="assets/img/`+ content.image + `" class="card-img-top p-3"  style="width: 220px; height: 200px; object-fit: cover;" 
+                                alt="Image">
+                            <i class="bi bi-heart position-absolute top-0 end-0 m-2 fs-4 text-dark"></i>
+                        </div>
+                        <div class="card-body text-start" style="font-family:ProximaNova-Black, sans-serif;">
+                            <p class="text-muted mb-0" style="font-size: 1rem;">`+ product.category + `</p>
+                            <h6 class="card-title fw-bold" style="font-size: 1.2rem;">`+ content.name + `</h6>
+                            <p class="fw-semibold" style="font-size: 1.2rem;">₱`+ content.price + `</p>
+                             <button onclick="addToReceipt('`+ content.price + `','` + content.name + `')" class="buy-button w-100 rounded-3">BUY</button>
+
+                        </div>
+                    </div>
+                 `;
+            });
+        }
+
+        function loadProductsAndClose(index) {
+            loadProducts(index);
+
+            const offcanvasElement = document.getElementById('sideBar');
+            const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
+            if (offcanvasInstance) {
+                offcanvasInstance.hide();
+            }
+        }
+
+        function addToReceipt(price, name) {
+            var receiptContainer = document.getElementById("receipt");
+            total = parseFloat(total) + parseFloat(price);
+
+            totalValueElement = document.getElementById("totalValue");
+            totalValueElement.innerHTML = total;
+
+            receiptContainer.innerHTML += `
+                <div class="d-flex flex-row justify-content-between">
+                    <div><small>`+ name + `</small></div>
+                    <div><small>₱`+ price + `</small></div>
+                </div>
+            `;
+        }
+
+        function openReceiptModal() {
+            document.getElementById("modalTotalValue").innerText = total.toFixed(2);
+            const modal = new bootstrap.Modal(document.getElementById('receiptModal'));
+            modal.show();
+        }
+
+        document.querySelector(".btn-checkout.btn-sm").addEventListener("click", function () {
+            document.getElementById("receipt").innerHTML = "";
+            total = 0;
+            document.getElementById("totalValue").innerText = "0.00";
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById("receiptModal"));
+            modal.hide();
+
+
+        });
+
+        function loadRandomProductsOnStart() {
+            var allContents = [];
+
+            products.forEach(product => {
+                product.contents.forEach(content => {
+                    allContents.push({
+                        ...content,
+                        category: product.category
+                    });
+                });
+            });
+
+            for (let i = allContents.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [allContents[i], allContents[j]] = [allContents[j], allContents[i]];
+            }
+
+            const maincontainer = document.getElementById("maincontainer");
+            maincontainer.innerHTML = "";
+
+            allContents.forEach(content => {
+                maincontainer.innerHTML += `
+                    <div class="card shadow rounded-4 m-1 d-flex justify-content-center" 
+                        style="width: 352px; height: 370px;">
+                        <div class="position-relative d-flex justify-content-center align-items-center">
+                            <img src="assets/img/`+ content.image + `" 
+                                class="card-img-top p-3"  
+                                style="width: clamp(180px, 55%, 220px); height: clamp(160px, 28vh, 200px); object-fit: cover;" 
+                                alt="Image">
+                            <i class="bi bi-heart position-absolute top-0 end-0 m-2 fs-4 text-dark"></i>
+                        </div>
+                        <div class="card-body text-start" style="font-family:ProximaNova-Black, sans-serif;">
+                            <p class="text-muted mb-0" style="font-size: 1rem;">`+ content.category + `</p>
+                            <h6 class="card-title fw-bold" style="font-size: 1.2rem;">`+ content.name + `</h6>
+                            <p class="fw-semibold" style="font-size: 1.2rem;">₱`+ content.price + `</p>
+                            <button onclick="addToReceipt('`+ content.price + `','` + content.name + `')" 
+                                    class="buy-button w-100 rounded-3">BUY</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        loadCategories();
+        loadCategoriesToggle();
+        loadRandomProductsOnStart();
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>
