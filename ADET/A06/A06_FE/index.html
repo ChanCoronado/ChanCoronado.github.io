@@ -219,7 +219,7 @@
         var products = [];
 
         const getAllCategories = async () => {
-            fetch('http://localhost/ChanCoronado.github.io/ADET/A06_BE/categories.php')
+            fetch('http://localhost/ChanCoronado.github.io/ADET/A06/A06_BE/categories.php')
                 .then(response => response.json())
                 .then(data => {
                     categories = data;
@@ -238,7 +238,7 @@
             };
 
             fetch(
-                'http://localhost/ChanCoronado.github.io/ADET/A06_BE/product.php', {
+                'http://localhost/ChanCoronado.github.io/ADET/A06/A06_BE/product.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
