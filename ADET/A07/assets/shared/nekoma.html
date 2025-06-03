@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nekoma High</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="icon" href="../../../../Image/logoChan.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        @font-face {
+            font-family: 'Dimitri';
+            src: url(../../assets/font/dimitri.ttf) format('truetype');
+        }
+
+        body {
+            background: linear-gradient(#171717f3, #260506f8),
+                url('../../assets/img/bg.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: 'Dimitri';
+            color: #de3535;
+
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-image:
+                linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        p {
+            color: white;
+            font-family: "Poppins", sans-serif;
+            font-size: clamp(1rem, 1vw, 2rem);
+            margin-top: 1vh;
+        }
+
+        .card {
+            background-color: #b62c2c;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-karasuno {
+            background-color: #ffbcbc;
+            color: #2B2B2B;
+            border: 2px solid#2B2B2B;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s ease;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .btn-karasuno:hover {
+            background-color: #de3535;
+            color: white;
+            border-color: white;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-12 text-start px-3 py-2 wow animate__animated animate__slideInDown">
+                <button type="button" class="back-btn" onclick="history.back()"
+                    style="background: none; border: none; color: #de3535">
+                    <i class='bx bx-left-arrow-circle' style="font-size: clamp(2rem, 4vw, 3.5rem);"></i>
+                </button>
+            </div>
+            <div class="col-12 text-center wow animate__animated animate__slideInDown">
+                <h1 class="my-4 mx-2"
+                    style="font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; text-shadow: 2px 2px #000000;">
+                    Welcome to Nekoma High
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mb-2">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-12 col-sm-12 wow animate__animated animate__slideInUp">
+                <div class="card p-2 rounded-3" style="max-height: 200%; max-width: 100%; object-fit:cover;">
+                    <img src="../../assets\img\trailer3.gif" class="img-fluid w-100 h-100 rounded-3"
+                        style="object-fit: cover;">
+                    <h2 class=" text-center my-3" style="color: white;">"Connect, Nekoma!"</h2>
+                    <p class="lead text-center">Nekoma High School, the “Cats Who Never Quit,” return with sharp
+                        instincts and seamless teamwork. Relive their strategic plays, unshakable bonds, and their
+                        timeless rivalry with Karasuno.</p>
+                    <a href="https://haikyuu.fandom.com/wiki/Nekoma_High" class="btn btn-karasuno mt-3">See More</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+</body>
+
+</html>
